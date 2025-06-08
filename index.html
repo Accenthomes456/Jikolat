@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OceanHire Maritime Recruitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1493857671505-72967e2e0040?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+        }
+        
+        .stats-counter::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #3490dc;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        /* Animation for hero text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        /* Custom checkbox for job filters */
+        .custom-checkbox input:checked + span {
+            background-color: #3490dc;
+            border-color: #3490dc;
+        }
+        
+        .custom-checkbox input:checked + span:after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.hidden {
+            transform: translateX(-100%);
+        }
+        
+        .mobile-menu.visible {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-anchor text-3xl text-blue-600 mr-2"></i>
+                <a href="#" class="text-2xl font-bold text-blue-800">Afri<span class="text-blue-600">Crew</span></a>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-blue-600 font-medium transition">Home</a>
+                <a href="#jobs" class="hover:text-blue-600 font-medium transition">Jobs</a>
+                <a href="#courses" class="hover:text-blue-600 font-medium transition">Courses</a>
+                <a href="#employers" class="hover:text-blue-600 font-medium transition">For Employers</a>
+                <a href="#candidates" class="hover:text-blue-600 font-medium transition">For Candidates</a>
+                <a href="#about" class="hover:text-blue-600 font-medium transition">About Us</a>
+                <a href="#contact" class="hover:text-blue-600 font-medium transition">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition hidden md:block">
+                    Register
+                </button>
+                
+                <button class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg font-medium transition hidden md:block">
+                    Login
+                </button>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 p-6 transition">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <i class="fas fa-anchor text-2xl text-blue-600 mr-2"></i>
+                <span class="text-xl font-bold text-blue-800">AfriCrew</span>
+            </div>
+            <button id="close-mobile-menu" class="text-gray-500">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <nav class="flex flex-col space-y-4">
+            <a href="#home" class="hover:text-blue-600 font-medium transition">Home</a>
+            <a href="#jobs" class="hover:text-blue-600 font-medium transition">Jobs</a>
+            <a href="#courses" class="hover:text-blue-600 font-medium transition">Courses</a>
+            <a href="#employers" class="hover:text-blue-600 font-medium transition">For Employers</a>
+            <a href="#candidates" class="hover:text-blue-600 font-medium transition">For Candidates</a>
+            <a href="#about" class="hover:text-blue-600 font-medium transition">About Us</a>
+            <a href="#contact" class="hover:text-blue-600 font-medium transition">Contact</a>
+        </nav>
+        
+        <div class="mt-8 flex flex-col space-y-3">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">
+                Register
+            </button>
+            
+            <button class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg font-medium transition">
+                Login
+            </button>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero-image pt-28 pb-20 flex items-center text-white">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl animate-fade-in-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Africa's Leading Maritime Recruitment Specialists</h1>
+                <p class="text-lg md:text-xl mb-8">Connecting African maritime talent with global onshore and offshore opportunities. Your trusted partner for crew placement across all marine sectors.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition flex-1 sm:flex-none">
+                        Find Jobs <i class="fas fa-search ml-2"></i>
+                    </button>
+                    <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition flex-1 sm:flex-none">
+                        Post a Job <i class="fas fa-briefcase ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Statistics Section -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="stats-counter p-6 bg-white rounded-lg shadow relative">
+                    <div class="text-blue-600 text-4xl font-bold mb-2">1,200+</div>
+                    <div class="text-gray-600 text-lg font-medium">Jobs Available</div>
+                </div>
+                <div class="stats-counter p-6 bg-white rounded-lg shadow relative">
+                    <div class="text-blue-600 text-4xl font-bold mb-2">5,000+</div>
+                    <div class="text-gray-600 text-lg font-medium">Qualified Candidates</div>
+                </div>
+                <div class="stats-counter p-6 bg-white rounded-lg shadow relative">
+                    <div class="text-blue-600 text-4xl font-bold mb-2">200+</div>
+                    <div class="text-gray-600 text-lg font-medium">Trusted Companies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Job Categories -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Maritime Job Categories</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-ship text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Offshore Deck Crew</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Positions for Captains, Mates, and Deckhands on tankers, bulk carriers, container ships and other merchant vessels.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-cogs text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Offshore Engine Crew</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Chief Engineers, Mechanics & Technical staff for offshore vessels, rigs, and specialized marine equipment.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-utensils text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Catering Department</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Positions for Chefs, Stewards, and Hospitality staff on cruise ships, yachts, and offshore installations.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-laptop text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Maritime Services</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Surveyors, trainers, classification specialists and other shore-based maritime professionals.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-warehouse text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Port Operations</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Harbor pilots, terminal operators, stevedores and port authority personnel for African ports.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-hard-hat text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Offshore Oil & Gas</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Drill crews, ROV operators, divers and platform staff for Africa's growing offshore energy sector.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Jobs -->
+    <section id="jobs" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured Maritime Jobs</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="mb-8 p-4 bg-white rounded-lg shadow">
+                <div class="flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-1">
+                        <input type="text" placeholder="Job title, keywords" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="flex-1">
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">All Locations</option>
+                            <option value="offshore">Offshore</option>
+                            <option value="onshore">Onshore</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="america">Americas</option>
+                            <option value="africa">Africa/Middle East</option>
+                        </select>
+                    </div>
+                    <div class="flex-1">
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">All Categories</option>
+                            <option value="deck">Deck Department</option>
+                            <option value="engine">Engine Department</option>
+                            <option value="catering">Catering Department</option>
+                            <option value="technical">Technical & IT</option>
+                            <option value="port">Port & Shore-based</option>
+                            <option value="offshore">Offshore Energy</option>
+                        </select>
+                    </div>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                        Search
+                    </button>
+                </div>
+                
+                <div class="mt-4 flex flex-wrap gap-4">
+                    <label class="custom-checkbox flex items-center cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <span class="w-4 h-4 border border-gray-400 rounded-sm inline-block mr-2 flex-shrink-0 relative"></span>
+                        <span class="select-none">Full-time</span>
+                    </label>
+                    <label class="custom-checkbox flex items-center cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <span class="w-4 h-4 border border-gray-400 rounded-sm inline-block mr-2 flex-shrink-0 relative"></span>
+                        <span class="select-none">Contract</span>
+                    </label>
+                    <label class="custom-checkbox flex items-center cursor-pointer">
+                        <input type="checkbox" class="hidden">
+                        <span class="w-4 h-4 border border-gray-400 rounded-sm inline-block mr-2 flex-shrink-0 relative"></span>
+                        <span class="select-none">Rotation</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-6">
+                <div class="job-card p-6 bg-white rounded-lg shadow hover:shadow-lg transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://via.placeholder.com/80" alt="Company Logo" class="w-16 h-16 object-contain border border-gray-200 rounded">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Chief Engineer - Container Ship</h3>
+                                <div class="flex flex-wrap items-center gap-2 mt-1">
+                                    <span class="text-blue-600 font-medium">Maersk Line</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-1"></i> Worldwide Rotation</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-lg font-bold text-blue-600">$12,000 - $15,000/mo</span>
+                            <span class="text-sm text-gray-500">Posted 3 days ago</span>
+                            <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">We're seeking an experienced Chief Engineer for a large container vessel operating on international routes. STCW certification required with at least 5 years of experience in a similar role.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Engine Department</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Container Ships</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">6 Weeks On/Off</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job-card p-6 bg-white rounded-lg shadow hover:shadow-lg transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://via.placeholder.com/80" alt="Company Logo" class="w-16 h-16 object-contain border border-gray-200 rounded">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Offshore Installation Manager</h3>
+                                <div class="flex flex-wrap items-center gap-2 mt-1">
+                                    <span class="text-blue-600 font-medium">Shell Offshore</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-1"></i> Gulf of Mexico</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> Rotation (28/28)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-lg font-bold text-blue-600">$18,000 - $22,000/mo</span>
+                            <span class="text-sm text-gray-500">Posted 1 week ago</span>
+                            <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Experienced OIM needed for deepwater drilling operation in the Gulf of Mexico. Must have BOSIET certification and previous OIM experience in similar environments.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Offshore Energy</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Oil & Gas</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Senior Management</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job-card p-6 bg-white rounded-lg shadow hover:shadow-lg transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://via.placeholder.com/80" alt="Company Logo" class="w-16 h-16 object-contain border border-gray-200 rounded">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Port Captain - Container Terminal</h3>
+                                <div class="flex flex-wrap items-center gap-2 mt-1">
+                                    <span class="text-blue-600 font-medium">Port of Los Angeles</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="text-gray-600"><i class="fas fa-map-marker-alt mr-1"></i> Los Angeles, CA</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="text-gray-600"><i class="fas fa-clock mr-1"></i> Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-lg font-bold text-blue-600">$110,000 - $130,000/yr</span>
+                            <span class="text-sm text-gray-500">Posted 2 weeks ago</span>
+                            <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Seeking an experienced Port Captain to oversee vessel operations at our busy container terminal. Minimum 10 years sailing experience as Master preferred with strong knowledge of port operations.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Port Operations</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Shore-based</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition">
+                    View All Maritime Jobs <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Maritime Training Courses</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Enhance your maritime career with our specialized training programs and certifications.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="course-card bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1521478706270-b052ffa19f8b" alt="STCW Training" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">STCW Basic Safety Training</h3>
+                        <p class="text-gray-600 mb-4">Mandatory safety training for all seafarers covering firefighting, survival techniques and more.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">1 Week</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Required</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1603366615917-1fa2dad1f1ee" alt="Offshore Safety" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Offshore Safety & Survival</h3>
+                        <p class="text-gray-600 mb-4">Specialized safety training for offshore oil and gas operations including helicopter safety.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">3 Days</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Popular</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                    <img src="https://images.unsplash.com/photo-1566089118105-eda834c4461d" alt="Advanced Navigation" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Advanced Navigation Techniques</h3>
+                        <p class="text-gray-600 mb-4">Master electronic navigation systems including ECDIS, Radar and AIS operation.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">2 Weeks</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                    View All Courses <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Employers Section -->
+    <section id="employers" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">For Maritime Employers</h2>
+                    <div class="w-20 h-1 bg-blue-600 mb-6"></div>
+                    <p class="text-gray-600 mb-6">Finding qualified maritime professionals can be challenging. Our specialized recruitment services connect you with vetted candidates who meet your exact requirements.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-users text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Access to Qualified Professionals</h4>
+                                <p class="text-gray-600">Our database includes thousands of certified maritime professionals across all departments and specialties.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-search-dollar text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Cost-Effective Recruitment</h4>
+                                <p class="text-gray-600">Reduce your time-to-hire and recruitment costs with our targeted approach to maritime staffing.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-globe text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Global Reach</h4>
+                                <p class="text-gray-600">We source candidates internationally to meet your crew nationality preferences and compliance requirements.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="mt-8 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                        Post a Job <i class="fas fa-briefcase ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="md:w-1/2 bg-gray-100 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3" alt="Maritime Employers" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- For Candidates Section -->
+    <section id="candidates" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">For Maritime Professionals</h2>
+                    <div class="w-20 h-1 bg-blue-600 mb-6"></div>
+                    <p class="text-gray-600 mb-6">Advance your maritime career with opportunities across the globe. Whether you're looking for offshore rotations or shore-based positions, we connect you with top employers in the industry.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-passport text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Global Opportunities</h4>
+                                <p class="text-gray-600">Access maritime jobs with leading companies worldwide, from cruise lines to offshore energy providers.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-bell text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Job Alerts</h4>
+                                <p class="text-gray-600">Get notified when new positions matching your skills and preferences become available.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-file-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Career Resources</h4>
+                                <p class="text-gray-600">Access guides on certification requirements, interview tips, and career development in the maritime sector.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                            Upload CV <i class="fas fa-upload ml-2"></i>
+                        </button>
+                        <button class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition">
+                            Browse Jobs <i class="fas fa-search ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-gray-100 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1593369196682-6d8ec3ff3a31?ixlib=rb-4.0.3" alt="Maritime Professionals" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">What Our Clients Say</h2>
+                <div class="w-20 h-1 bg-white mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial-card p-8 bg-blue-700 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://via.placeholder.com/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Captain Michael Johansen</h4>
+                            <p class="text-blue-200 text-sm">Master Mariner</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"OceanHire helped me transition from tankers to cruise ships when I was ready for a change. Their recruiters understood exactly what experience would be valued by cruise operators and matched me with the perfect opportunity."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 bg-blue-700 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://via.placeholder.com/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sarah El-Masri</h4>
+                            <p class="text-blue-200 text-sm">HR Director, Offshore Energy Company</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"We've been working with OceanHire for three years to staff our offshore platforms. Their maritime-specific approach means we get qualified candidates quickly, even for specialized technical positions in remote locations."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <i class="fas fa-star text-yellow-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Us -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">About AfriCrew</h2>
+                    <div class="w-20 h-1 bg-blue-600 mb-6"></div>
+                    <p class="text-gray-600 mb-6">Founded by maritime professionals in 2010, OceanHire has grown to become a leading recruitment specialist for the global maritime industry. With offices in key shipping hubs worldwide, we bridge the gap between maritime talent and employers across commercial shipping, offshore energy, yachting, and port operations.</p>
+                    <p class="text-gray-600 mb-6">Our team combines recruitment expertise with first-hand maritime experience, ensuring we understand the unique requirements of both candidates and employers in this specialized field.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div>
+                            <div class="text-blue-600 text-3xl font-bold mb-2">12+</div>
+                            <div class="text-gray-600 text-lg font-medium">Years in Maritime Recruitment</div>
+                        </div>
+                        <div>
+                            <div class="text-blue-600 text-3xl font-bold mb-2">98%</div>
+                            <div class="text-gray-600 text-lg font-medium">Client Retention Rate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-gray-100 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3" alt="About OceanHire" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/2 bg-blue-600 text-white p-8 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold mb-6">Get in Touch</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt mt-1 mr-4"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Our Offices</h4>
+                                        <p>123 Maritime Plaza<br>Singapore 098765<br>10 Harbor View, Rotterdam<br>5 Dockside, Houston</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <i class="fas fa-phone-alt mt-1 mr-4"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Call Us</h4>
+                                        <p>+65 1234 5678 (Singapore)<br>+31 1234 5679 (Rotterdam)<br>+1 832 123 4567 (Houston)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <i class="fas fa-envelope mt-1 mr-4"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Email Us</h4>
+                                        <p>info@oceanhire.com<br>jobs@oceanhire.com<br>employers@oceanhire.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+                            <form class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-gray-700 mb-1">First Name</label>
+                                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 mb-1">Last Name</label>
+                                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-1">Email</label>
+                                    <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-1">Subject</label>
+                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Select a subject</option>
+                                        <option value="job seeker">Job Seeker Inquiry</option>
+                                        <option value="employer">Employer Services</option>
+                                        <option value="general">General Inquiry</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 mb-1">Message</label>
+                                    <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="py-12 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl font-bold mb-4">Stay Updated with Maritime Job Opportunities</h2>
+                <p class="mb-6">Subscribe to our newsletter for the latest job openings, industry news, and career advice in the maritime sector.</p>
+                
+                <form class="flex flex-col sm:flex-row gap-2 max-w-lg mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-anchor text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-xl font-bold">Afri<span class="text-blue-400">Crew</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Specialized maritime recruitment connecting global talent with industry employers since 2010.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin-in text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#jobs" class="text-gray-400 hover:text-white transition">Browse Jobs</a></li>
+                        <li><a href="#employers" class="text-gray-400 hover:text-white transition">Employer Services</a></li>
+                        <li><a href="#candidates" class="text-gray-400 hover:text-white transition">Candidate Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Job Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Deck Department</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Engine Department</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Catering Department</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Technical & IT</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Port & Shore-based</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Offshore Energy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Locations</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-2 mt-1 text-blue-400"></i>
+                            <span class="text-gray-400">123 Maritime Plaza<br>Singapore 098765</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-2 mt-1 text-blue-400"></i>
+                            <span class="text-gray-400">10 Harbor View<br>Rotterdam, Netherlands</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-2 mt-1 text-blue-400"></i>
+                            <span class="text-gray-400">5 Dockside<br>Houston, TX 77001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 OceanHire Maritime Recruitment. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('visible');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('visible');
+            mobileMenu.classList.add('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('visible')) {
+                        mobileMenu.classList.remove('visible');
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Job card hover effect
+        const jobCards = document.querySelectorAll('.job-card');
+        jobCards.forEach(card => {
+            card.style.transition = 'all 0.3s ease';
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=AccentH/africrew" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
