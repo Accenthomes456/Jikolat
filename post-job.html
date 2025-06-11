@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job | Your Company</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">Post a Job Opening</h1>
+
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="bg-white p-6 rounded-lg shadow-md space-y-4">
+      <div>
+        <label class="block font-medium">Company Name</label>
+        <input type="text" name="company" required class="w-full border border-gray-300 p-2 rounded" />
+      </div>
+      <div>
+        <label class="block font-medium">Job Title</label>
+        <input type="text" name="title" required class="w-full border border-gray-300 p-2 rounded" />
+      </div>
+      <div>
+        <label class="block font-medium">Location</label>
+        <input type="text" name="location" required class="w-full border border-gray-300 p-2 rounded" />
+      </div>
+      <div>
+        <label class="block font-medium">Job Type</label>
+        <select name="type" class="w-full border border-gray-300 p-2 rounded">
+          <option>Full-Time</option>
+          <option>Part-Time</option>
+          <option>Contract</option>
+          <option>Internship</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium">Job Description</label>
+        <textarea name="description" rows="5" required class="w-full border border-gray-300 p-2 rounded"></textarea>
+      </div>
+      <div>
+        <label class="block font-medium">Application Email or URL</label>
+        <input type="text" name="apply_link" required class="w-full border border-gray-300 p-2 rounded" />
+      </div>
+
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Submit Job</button>
+    </form>
+
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Recently Posted Jobs</h2>
+      <!-- Placeholder for dynamic job listings -->
+      <div class="bg-white p-4 rounded shadow text-center text-gray-500">
+        Job listings will appear here after submission.
+        <br />
+        (You’ll need a backend or CMS to display submitted jobs.)
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
