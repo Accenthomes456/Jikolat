@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featured Maritime Jobs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center mb-8">
+      Featured <span class="text-blue-600">Maritime Jobs</span>
+    </h1>
+
+    <!-- Filter Section -->
+    <div class="bg-white p-4 rounded-md shadow mb-8">
+      <div class="flex flex-wrap gap-4">
+        <input type="text" placeholder="Job title, keywords" class="flex-grow px-4 py-2 border rounded w-full md:w-1/4">
+        <select class="px-4 py-2 border rounded w-full md:w-1/4">
+          <option>All Locations</option>
+        </select>
+        <select class="px-4 py-2 border rounded w-full md:w-1/4">
+          <option>All Categories</option>
+        </select>
+        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Search</button>
+      </div>
+      <div class="mt-4 flex gap-4">
+        <label><input type="checkbox" class="mr-1"> Full-time</label>
+        <label><input type="checkbox" class="mr-1"> Contract</label>
+        <label><input type="checkbox" class="mr-1"> Rotation</label>
+      </div>
+    </div>
+
+    <!-- Job Listing Card -->
+    <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
+      <img src="images/logo.png" alt="Company Logo" class="h-16 w-16 object-contain" />
+      <div class="flex-grow">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="text-xl font-semibold">Chief Engineer - Container Ship</h2>
+            <div class="text-sm text-gray-600 mt-1">
+              <a href="#" class="text-blue-600 font-medium">Maersk Line</a> • Worldwide Rotation • Full-time
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-blue-600 font-semibold">$12,000 - $15,000/mo</p>
+            <p class="text-sm text-gray-500">Posted 3 days ago</p>
+            <button class="mt-2 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Apply Now</button>
+          </div>
+        </div>
+        <p class="mt-4 text-gray-700 text-sm">
+          We're seeking an experienced Chief Engineer for a large container vessel operating on international routes. STCW certification required with at least 5 years of experience in a similar role.
+        </p>
+        <div class="flex gap-2 mt-3 flex-wrap">
+          <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Engine Department</span>
+          <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">Container Ships</span>
+          <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">6 Weeks On/Off</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more job cards below in the same format -->
+
+  </div>
+
+</body>
+</html>
