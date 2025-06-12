@@ -1,4 +1,0 @@
-create a website for a shipping crew hiring named Africrew which hires both offshore and onshore for different companies 
-create a recruiting website for maritime jobs both onshore and offshore positions
-name the company AfriCrew and differentiate the job positions into onshore and offshore
-replace every Oceanshire to AfriCrew and add tab for courses learning
