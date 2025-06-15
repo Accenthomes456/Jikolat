@@ -5,167 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jikolat Global CV Form</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .tab-button.active {
-      @apply text-blue-600 font-semibold border-b-2 border-blue-600;
-    }
-  </style>
 </head>
 <body class="bg-gray-100">
-  <div class="max-w-6xl mx-auto p-6 bg-white shadow-md my-10 rounded-lg">
-    <h2 class="text-2xl font-bold text-blue-700 mb-4">Jikolat Global Limited - Seafarer CV Form</h2>
+  <div class="max-w-5xl mx-auto p-8 my-10 bg-white shadow-md rounded-lg">
+    <h1 class="text-3xl font-bold text-blue-700 mb-6">Jikolat Global Limited - Seafarer CV Form</h1>
 
     <form action="submit_cv.php" method="POST">
-      <!-- Tabs -->
-      <div class="flex flex-wrap items-center space-x-4 mb-6 border-b pb-2" id="tab-buttons">
-        <button type="button" class="tab-button active" data-tab="tab1">Certificates</button>
-        <button type="button" class="tab-button" data-tab="tab2">Previous Employer</button>
-        <button type="button" class="text-blue-500 hover:text-blue-700" id="addTabBtn">+ Add Tab</button>
-      </div>
 
-      <!-- Main Info -->
-      <fieldset class="mb-8">
-        <legend class="font-semibold text-lg text-gray-700 mb-2">Main Info</legend>
+      <!-- PERSONAL INFO -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">Personal Information</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="name" placeholder="First Name*" required class="border p-2" />
-          <input type="text" name="surname" placeholder="Surname*" required class="border p-2" />
-          <select name="position" required class="border p-2">
-            <option value="">Position Applied For*</option>
-            <option value="os">OS (ORDINARY SEAMAN)</option>
-          </select>
-          <select name="vessel_type" class="border p-2">
-            <option value="">Desired Vessel Type</option>
-            <option value="offshore">Offshore Fleet</option>
-          </select>
-          <input type="text" name="salary" placeholder="Minimum salary per month $" class="border p-2" />
-          <input type="date" name="dob" required class="border p-2" />
-          <input type="text" name="pob" placeholder="Place of Birth*" required class="border p-2" />
-          <input type="tel" name="phone1" placeholder="Phone 1*" required class="border p-2" />
-          <input type="tel" name="phone2" placeholder="Phone 2" class="border p-2" />
-          <select name="citizenship" required class="border p-2">
-            <option value="nigeria">Nigeria</option>
-          </select>
-          <input type="email" name="email" placeholder="Email" class="border p-2" />
-          <input type="text" name="residence" placeholder="Country/City of Residence" class="border p-2" />
-          <input type="text" name="messenger" placeholder="Messenger (e.g., WhatsApp)" class="border p-2" />
-          <input type="text" name="address" placeholder="Home Address" class="border p-2" />
-          <select name="english" class="border p-2">
+          <input type="text" name="name" placeholder="First Name*" required class="border p-2 rounded" />
+          <input type="text" name="surname" placeholder="Surname*" required class="border p-2 rounded" />
+          <input type="text" name="position" placeholder="Position Applied For*" required class="border p-2 rounded" />
+          <input type="text" name="vessel_type" placeholder="Desired Vessel Type" class="border p-2 rounded" />
+          <input type="text" name="salary" placeholder="Minimum Salary per Month ($)" class="border p-2 rounded" />
+          <input type="date" name="dob" placeholder="Date of Birth" required class="border p-2 rounded" />
+          <input type="text" name="pob" placeholder="Place of Birth" required class="border p-2 rounded" />
+          <input type="tel" name="phone1" placeholder="Phone 1*" required class="border p-2 rounded" />
+          <input type="tel" name="phone2" placeholder="Phone 2" class="border p-2 rounded" />
+          <input type="email" name="email" placeholder="Email Address" class="border p-2 rounded" />
+          <input type="text" name="citizenship" placeholder="Citizenship*" required class="border p-2 rounded" />
+          <input type="text" name="residence" placeholder="Country of Residence / City" class="border p-2 rounded" />
+          <input type="text" name="messenger" placeholder="Messenger (e.g., WhatsApp)" class="border p-2 rounded" />
+          <input type="text" name="address" placeholder="Home Address" class="border p-2 rounded" />
+          <select name="english" class="border p-2 rounded">
+            <option value="">English Level</option>
             <option value="fluent">Fluent</option>
             <option value="good">Good</option>
             <option value="average">Average</option>
           </select>
-          <input type="text" name="airport" placeholder="Closest Airport" class="border p-2" />
-          <input type="date" name="usa_visa" placeholder="USA Visa Valid Until" class="border p-2" />
-          <input type="date" name="schengen_visa" placeholder="Schengen Visa Valid Until" class="border p-2" />
+          <input type="text" name="airport" placeholder="Closest Airport" class="border p-2 rounded" />
+          <input type="date" name="usa_visa" placeholder="USA Visa Valid Until" class="border p-2 rounded" />
+          <input type="date" name="schengen_visa" placeholder="Schengen Visa Valid Until" class="border p-2 rounded" />
         </div>
-      </fieldset>
+      </section>
 
-      <!-- Passport Info -->
-      <fieldset class="mb-8">
-        <legend class="font-semibold text-lg text-gray-700 mb-2">Passports / Seamans Book</legend>
+      <!-- DOCUMENTS -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">Travel Documents</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Seaman's Book -->
+          <input type="text" name="seamans_book" placeholder="Seaman's Book / ID Card No.*" required class="border p-2 rounded" />
+          <input type="date" name="seamans_issue_date" placeholder="Issue Date" required class="border p-2 rounded" />
+          <input type="text" name="seamans_country" placeholder="Country of Issue" required class="border p-2 rounded" />
+          <input type="date" name="seamans_valid_up" placeholder="Valid Until" required class="border p-2 rounded" />
+
+          <!-- Passport -->
+          <input type="text" name="passport_no" placeholder="International Passport No.*" required class="border p-2 rounded" />
+          <input type="date" name="passport_issue_date" placeholder="Issue Date" required class="border p-2 rounded" />
+          <input type="text" name="passport_country" placeholder="Country of Issue" required class="border p-2 rounded" />
+          <input type="date" name="passport_valid_up" placeholder="Valid Until" required class="border p-2 rounded" />
+        </div>
+      </section>
+
+      <!-- CERTIFICATES -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">Certificates</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <input type="text" name="seamans_book" placeholder="Seaman's Book Number*" class="border p-2" required />
-          <input type="date" name="seamans_issue_date" class="border p-2" required />
-          <input type="text" name="seamans_country" placeholder="Country of Issue" class="border p-2" required />
-          <input type="date" name="seamans_valid_up" class="border p-2" required />
-
-          <input type="text" name="passport_no" placeholder="Passport Number*" class="border p-2" required />
-          <input type="date" name="passport_issue_date" class="border p-2" required />
-          <input type="text" name="passport_country" placeholder="Country of Issue" class="border p-2" required />
-          <input type="date" name="passport_valid_up" class="border p-2" required />
+          <input type="text" name="certificate_name" placeholder="Certificate Name" class="border p-2 rounded" />
+          <input type="text" name="certificate_number" placeholder="Number" class="border p-2 rounded" />
+          <input type="date" name="certificate_issue" placeholder="Date of Issue" class="border p-2 rounded" />
+          <input type="date" name="certificate_valid" placeholder="Valid Until" class="border p-2 rounded" />
         </div>
-      </fieldset>
+      </section>
 
-      <!-- Tab Contents -->
-      <div id="tab-contents">
-        <!-- Certificates -->
-        <div class="tab-content active" id="tab1">
-          <h3 class="text-lg font-semibold mb-2">Certificates</h3>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 text-sm" id="certificates">
-            <input class="border p-2" name="cert_name[]" placeholder="Certificate Name" />
-            <input class="border p-2" name="cert_number[]" placeholder="Number" />
-            <input class="border p-2" type="date" name="cert_issue[]" placeholder="Date of issue" />
-            <input class="border p-2" type="date" name="cert_valid[]" placeholder="Valid up to" />
-          </div>
+      <!-- EMPLOYMENT -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-4">Previous Employment</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" name="company_name" placeholder="Company Name" class="border p-2 rounded" />
+          <input type="text" name="position_held" placeholder="Position Held" class="border p-2 rounded" />
+          <input type="date" name="employment_start" placeholder="Start Date" class="border p-2 rounded" />
+          <input type="date" name="employment_end" placeholder="End Date" class="border p-2 rounded" />
         </div>
+      </section>
 
-        <!-- Previous Employer -->
-        <div class="tab-content" id="tab2">
-          <h3 class="text-lg font-semibold mb-2">Previous Employer</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 text-sm" id="employers">
-            <input class="border p-2" name="employer_name[]" placeholder="Company Name" />
-            <input class="border p-2" name="employer_position[]" placeholder="Position" />
-            <input class="border p-2" name="employer_start[]" type="date" placeholder="Start Date" />
-            <input class="border p-2" name="employer_end[]" type="date" placeholder="End Date" />
-          </div>
-        </div>
+      <!-- SUBMIT -->
+      <div class="flex items-center justify-between mt-6">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+          📤 Submit CV
+        </button>
+        <button type="reset" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+          Reset
+        </button>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="flex justify-between items-center mt-8">
-        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">📤 Upload CV</button>
-        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">💾 Save</button>
-      </div>
     </form>
 
     <!-- Info Box -->
-    <div class="mt-6 bg-yellow-100 p-4 rounded-md text-sm text-gray-700">
+    <div class="mt-8 bg-yellow-100 p-4 rounded text-sm text-gray-800">
       <strong>IMPORTANT:</strong> To find jobs via Jikolat with a <strong>BASIC</strong> account, you must apply for vacancies yourself.<br />
-      To receive job offers directly and get hired faster, activate a <strong class="text-blue-600">PREMIUM</strong> account. We will promote your CV automatically.
+      To receive job offers directly and get hired faster, activate a <strong class="text-blue-600">PREMIUM</strong> account.
     </div>
   </div>
-
-  <!-- JS -->
-  <script>
-    const tabButtons = document.getElementById('tab-buttons');
-    const tabContents = document.getElementById('tab-contents');
-    let tabCount = 3;
-
-    tabButtons.addEventListener('click', (e) => {
-      if (e.target.classList.contains('tab-button')) {
-        const tabId = e.target.dataset.tab;
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-        e.target.classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-      }
-    });
-
-    document.getElementById('addTabBtn').addEventListener('click', () => {
-      const newTabId = `tab${tabCount}`;
-      const newButton = document.createElement('button');
-      newButton.type = 'button';
-      newButton.className = 'tab-button';
-      newButton.dataset.tab = newTabId;
-      newButton.textContent = `Custom Tab ${tabCount}`;
-      tabButtons.insertBefore(newButton, document.getElementById('addTabBtn'));
-
-      const newTabContent = document.createElement('div');
-      newTabContent.className = 'tab-content';
-      newTabContent.id = newTabId;
-      newTabContent.innerHTML = `
-        <h3 class="text-lg font-semibold mb-2">New Section ${tabCount}</h3>
-        <div class="grid grid-cols-2 gap-4 text-sm">
-          <input class="border p-2" placeholder="Custom Field A" name="custom_a[]" />
-          <input class="border p-2" placeholder="Custom Field B" name="custom_b[]" />
-        </div>
-      `;
-      tabContents.appendChild(newTabContent);
-
-      // Activate the new tab
-      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      newButton.classList.add('active');
-      newTabContent.classList.add('active');
-
-      tabCount++;
-    });
-  </script>
 </body>
 </html>
