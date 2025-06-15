@@ -28,6 +28,105 @@
       <button class="tab-button" data-tab="tab3">Previous Employer</button>
       <button class="text-blue-500 hover:text-blue-700" id="addTabBtn">+ Add Tab</button>
     </div>
+    
+    <!-- profile -->
+        <section class="cv-form">
+      <h2>CV (Application Form)</h2>
+      <form action="submit_cv.php" method="POST">
+        <fieldset>
+          <legend>Main Info</legend>
+          
+          <label for="name">Name*</label>
+          <input type="text" id="name" name="name" required>
+    
+          <label for="surname">Surname*</label>
+          <input type="text" id="surname" name="surname" required>
+    
+          <label for="position">Position applied for*</label>
+          <select id="position" name="position" required>
+            <option value="os">OS (ORDINARY SEAMAN)</option>
+            <!-- Add more options as needed -->
+          </select>
+    
+          <label for="vessel_type">Desired Vessel Type</label>
+          <select id="vessel_type" name="vessel_type">
+            <option value="offshore">Offshore fleet</option>
+            <!-- Add more options -->
+          </select>
+    
+          <label for="salary">Minimum salary per month $</label>
+          <input type="text" id="salary" name="salary" placeholder="Negotiable">
+    
+          <label for="dob">Birthday / Place of birth*</label>
+          <input type="date" id="dob" name="dob" required>
+          <input type="text" id="pob" name="pob" placeholder="e.g. Lagos, Nigeria." required>
+    
+          <label for="phone1">Phone 1*</label>
+          <input type="tel" id="phone1" name="phone1" required>
+    
+          <label for="phone2">Phone 2</label>
+          <input type="tel" id="phone2" name="phone2">
+    
+          <label for="citizenship">Citizenship*</label>
+          <select id="citizenship" name="citizenship" required>
+            <option value="nigeria">Nigeria</option>
+            <!-- Add more countries -->
+          </select>
+    
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email">
+    
+          <label for="residence">Country of residence / City</label>
+          <input type="text" id="residence" name="residence">
+    
+          <label for="messenger">Messenger</label>
+          <input type="text" id="messenger" name="messenger" placeholder="WhatsApp">
+    
+          <label for="address">Home address</label>
+          <input type="text" id="address" name="address">
+    
+          <label for="english">English level</label>
+          <select id="english" name="english">
+            <option value="fluent">Fluent</option>
+            <option value="good">Good</option>
+            <option value="average">Average</option>
+          </select>
+    
+          <label for="airport">Closest airport</label>
+          <input type="text" id="airport" name="airport" placeholder="Murtala Muhammed">
+    
+          <label for="usa_visa">USA visa valid up</label>
+          <input type="date" id="usa_visa" name="usa_visa">
+    
+          <label for="schengen_visa">Schengen visa valid up</label>
+          <input type="date" id="schengen_visa" name="schengen_visa">
+        </fieldset>
+    
+        <fieldset>
+          <legend>Passports / Smbk</legend>
+          
+          <label for="seamans_book">Seaman's book / ID card No.*</label>
+          <input type="text" id="seamans_book" name="seamans_book" required>
+          <label>Date of issue</label>
+          <input type="date" name="seamans_issue_date" required>
+          <label>Country of issue</label>
+          <input type="text" name="seamans_country" required>
+          <label>Valid up</label>
+          <input type="date" name="seamans_valid_up" required>
+    
+          <label for="passport_no">International passport No.*</label>
+          <input type="text" id="passport_no" name="passport_no" required>
+          <label>Date of issue</label>
+          <input type="date" name="passport_issue_date" required>
+          <label>Country of issue</label>
+          <input type="text" name="passport_country" required>
+          <label>Valid up</label>
+          <input type="date" name="passport_valid_up" required>
+        </fieldset>
+    
+        <button type="submit">Publish CV</button>
+      </form>
+    </section>
 
     <!-- Tab Contents -->
     <div id="tab-contents">
@@ -57,7 +156,7 @@
           <input class="border p-2" placeholder="Date of issue" />
           <input class="border p-2" placeholder="Valid up to" />
         </div>
-        <button class="mt-2 text-blue-600 text-sm">+ Add More Certificates</button>
+        <button class="mt-2 text-blue-600 text-sm"id="addTabBtn">>+ Add More Certificates</button>
       </div>
 
       <!-- Tab 3 -->
@@ -74,7 +173,7 @@
 
     <!-- Buttons -->
     <div class="flex justify-between items-center mt-8">
-      <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">📤 Publish CV</button>
+      <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">📤 Upload CV</button>
       <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">💾 Save</button>
     </div>
 
