@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maritime Career Guidance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+    </style>
+  </head>
+  <body class="bg-blue-50 text-gray-800">
+    <header class="bg-white shadow sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <h1 class="text-2xl font-bold text-blue-800">Maritime Career Guide ⚓📊🌍</h1>
+        <nav class="flex flex-wrap justify-center md:justify-end gap-4 text-blue-600 font-medium">
+          <a href="#intro" class="hover:text-blue-800">Intro</a>
+          <a href="#roles" class="hover:text-blue-800">Roles</a>
+          <a href="#pathway" class="hover:text-blue-800">Pathway</a>
+          <a href="#challenges" class="hover:text-blue-800">Challenges</a>
+          <a href="#inst" class="hover:text-blue-800">Institutions</a>
+          <a href="#gallery" class="hover:text-blue-800">Gallery</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+      <!-- Intro -->
+      <section id="intro" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">Who is a Seafarer?</h2>
+        <p>A seafarer is a professional aboard a ship, responsible for safe navigation, operation, and maintenance across deck, engineering, technical, and catering departments.</p>
+        <h2 class="mt-6 text-xl font-bold text-blue-700 mb-4">Mentoring Students Toward a Seafaring Career</h2>
+        <p>Becoming an IMO‑recognized unlimited seagoing Captain or Chief Engineer (Master Mariner) requires a structured path of education, training, certification, and sea service under STCW guidelines.</p>
+      </section>
+
+      <!-- Roles -->
+      <section id="roles" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">🔍 Department Roles at a Glance</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li><strong>Master/Captain:</strong> Commands vessel, crew, navigation & compliance.</li>
+          <li><strong>Deck Department:</strong> Manages navigation, cargo ops, watchkeeping & safety.</li>
+          <li><strong>Engine Department:</strong> Oversees propulsion, machinery maintenance & technical systems.</li>
+          <li><strong>Catering Department:</strong> Handles food service, hygiene & crew welfare.</li>
+        </ul>
+      </section>
+
+      <!-- Perks -->
+      <section class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">Real‑Life Perks of Being a Seafarer</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Travel the world visa‑free and experience new cultures.</li>
+          <li>High demand roles and competitive global salaries.</li>
+          <li>Opportunities to grow into shore‑based maritime careers.</li>
+        </ul>
+      </section>
+
+      <!-- Educational Pathway -->
+      <section id="pathway" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">Educational Pathway</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Choose science subjects (physics, chemistry, math, technical subjects, geography).</li>
+          <li>Enroll in an IMO‑recognized maritime academy.</li>
+          <li>Pursue Marine Engineering or Nautical Science.</li>
+          <li>Complete STCW certifications (safety, firefighting, navigation).</li>
+          <li>Progress through Cadet → Officer → Chief Engineer/Captain.</li>
+        </ul>
+      </section>
+
+      <!-- Challenges -->
+      <section id="challenges" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">Anticipated Challenges</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Physical & mental readiness for life at sea.</li>
+          <li>Combatting stereotypes, myths & family reluctance.</li>
+          <li>Gender inclusion—encouraging girls in maritime roles.</li>
+          <li>Financial support—seeking scholarships and sponsorships.</li>
+        </ul>
+      </section>
+
+      <!-- Alt Pathways -->
+      <section id="alt-routes" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">Alternative Pathways (Non‑Science Students)</h2>
+        <p>Determined students can follow this route:</p>
+        <ul class="list-decimal list-inside space-y-1">
+          <li>GP Rating Course → Sea Service → Near Coastal Voyage (NCV) Associate Course</li>
+          <li>Pass STCW (firefighting, survival, first aid)</li>
+          <li>Obtain OOW (NCV) or Engine Room Watchkeeping Certificate</li>
+          <li>Advance: NCV Chief Mate → NCV Master or Chief Engineer → upgrade to Unlimited CoC</li>
+        </ul>
+      </section>
+
+      <!-- Institutions -->
+      <section id="inst" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">NIMASA‑Accredited Institutions (Nigeria)</h2>
+        <ul class="list-decimal list-inside space-y-1">
+          <li>Maritime Academy of Nigeria (MAN), Oron</li>
+          <li>Federal College of Fisheries & Marine Technology, Lagos</li>
+          <li>Charkin Maritime Safety Centre, Port Harcourt</li>
+          <li>Elkins Marine Training International, Owerri</li>
+          <li>Joe Marine Institute, Effurun</li>
+          <li>Coastal Maritime Academy, Ikoyi</li>
+        </ul>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="bg-white rounded-lg p-6 shadow">
+        <h2 class="text-xl font-bold text-blue-700 mb-4">📷 Image Gallery</h2>
+        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+          <img src="your-image-path-1.jpg" alt="Maritime Training" class="w-full h-auto rounded-lg shadow" />
+          <img src="your-image-path-2.jpg" alt="Ship Crew" class="w-full h-auto rounded-lg shadow" />
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-blue-800 text-white py-6">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <p>&copy; 2025 Maritime Career Guidance | All rights reserved ⚓📊🌍</p>
+      </div>
+    </footer>
+  </body>
+</html>
