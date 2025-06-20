@@ -117,6 +117,61 @@
         .mobile-menu.visible {
             transform: translateX(0);
         }
+        
+          .learn-more {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        
+          .info-box {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 0 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 300px;
+            margin-top: 10px;
+            z-index: 10;
+          }
+        
+          .info-box.show {
+            max-height: 200px; /* enough to show content */
+            opacity: 1;
+            padding: 15px;
+          }
+        
+          .close-btn {
+            margin-top: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+        
+          @media (min-width: 768px) {
+            .info-box {
+              position: absolute;
+              top: 50px;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        
+          @media (max-width: 767px) {
+            .info-box {
+              position: static;
+              transform: none;
+            }
+          }
+
     </style>
 </head>
 <body class="text-gray-800 bg-gray-50">
@@ -213,12 +268,7 @@
                 </div>
             </div>
         </div>
-                            <!-- Wave inside hero -->
-              <div class="wave-shape absolute bottom-0 left-0 w-full">
-                <svg viewBox="0 0 500 150" preserveAspectRatio="none">
-                  <path class="shape-fill" d="M0.00,49.98 C150.00,150.00 350.00,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"></path>
-                </svg>
-              </div>
+
     </section>
     
     <!-- Statistics Section -->
@@ -303,18 +353,6 @@
                 <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-ship text-blue-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">Captainship & Command Positions</h3>
-                    </div>
-                    <p class="text-gray-600 mb-4">Positions for Captains, Mates, and Deckhands on tankers, bulk carriers, container ships and other merchant vessels.</p>
-                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-
                 <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
                     <div class="flex items-center mb-4">
                         <div class="bg-blue-100 p-3 rounded-full mr-4">
@@ -323,7 +361,16 @@
                         <h3 class="text-xl font-semibold">Seafaring/Shipboard Jobs</h3>
                     </div>
                     <p class="text-gray-600 mb-4">Includes deck officers, marine engineers, and ratings (e.g., Able Seamen, Oilers, Bosuns). These professionals operate and maintain ships.</p>
-                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Learn More... <i class="fas fa-arrow-right ml-2"></i></a>
+                    <div id="infoBox" class="info-box">
+                      <p>Seafarer jobs are broadly categorized into three main areas: deck, engine, and catering/housekeeping departments. Each department has specific roles and responsibilities:</p>
+                      <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="close-btn" onclick="toggleBox()">Close</button>
+                        <a href="jobs.html">
+                          <button class="close-btn" style="background-color: #3498db;">Explore Jobs</button>
+                        </a>
+                      </div>
+                    </div>
                 </div>
 
                 <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
@@ -620,8 +667,8 @@
                 <div class="md:w-1/2">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">For Maritime Employers</h2>
                     <div class="w-20 h-1 bg-blue-600 mb-6"></div>
-                    <p class="text-gray-600 mb-6">Finding qualified maritime professionals can be challenging. Our specialized recruitment services connect you with vetted candidates who meet your exact requirements.</p>
-                    
+                    <p class="text-gray-600 mb-6">Finding qualified maritime professionals can be a complex task, but we simplify the process with our specialized recruitment services. We connect you with <strong>vetted candidates</strong> who meet your exact requirements, ensuring efficiency and reliability in staffing solutions.</p><br>
+                    <p class="text-gray-600 mb-6"><strong>Why Choose Jikolat Global Recruitment?</strong></p>
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
@@ -629,7 +676,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Access to Qualified Professionals</h4>
-                                <p class="text-gray-600">Our database includes thousands of certified maritime professionals across all departments and specialties.</p>
+                                <p class="text-gray-600">Our extensive database includes thousands of <strong>certified maritime experts</strong> across all departments and specialties.</p>
                             </div>
                         </div>
                         
@@ -639,7 +686,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Cost-Effective Recruitment</h4>
-                                <p class="text-gray-600">Reduce your time-to-hire and recruitment costs with our targeted approach to maritime staffing.</p>
+                                <p class="text-gray-600">Reduce your <strong>time-to-hire</strong> and recruitment expenses with our <strong>targeted approach</strong> to maritime staffing.</p>
                             </div>
                         </div>
                         
@@ -649,9 +696,10 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Global Reach</h4>
-                                <p class="text-gray-600">We source candidates internationally to meet your crew nationality preferences and compliance requirements.</p>
+                                <p class="text-gray-600">We source candidates internationally, ensuring crew nationality preferences and <strong>compliance requirements</strong> are met seamlessly.</p>
                             </div>
                         </div>
+                        <p class="text-gray-600 mb-6">Partner with <strong>Jikolat Global Recruitment</strong> to streamline your hiring process and secure top-tier maritime talent.</p>
                     </div>
 
                     <a href="post-job.html">
@@ -675,16 +723,16 @@
                 <div class="md:w-1/2">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">For Maritime Professionals</h2>
                     <div class="w-20 h-1 bg-blue-600 mb-6"></div>
-                    <p class="text-gray-600 mb-6">Advance your maritime career with opportunities across the globe. Whether you're looking for offshore rotations or shore-based positions, we connect you with top employers in the industry.</p>
-                    
+                    <p class="text-gray-600 mb-6">Advance your maritime career with <strong>global opportunities</strong> tailored to your expertise. Whether you're seeking <strong>offshore rotations</strong> or <strong>shore-based positions, Jikolat Global Recruitment</strong> connects you with <strong>top employers</strong> across the industry, ensuring a seamless career transition.</p><br>
+                    <p class="text-gray-600 mb-6"><strong>Why Choose Jikolat Global Recruitment?</strong></p>
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
                                 <i class="fas fa-passport text-blue-600"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-800">Global Opportunities</h4>
-                                <p class="text-gray-600">Access maritime jobs with leading companies worldwide, from cruise lines to offshore energy providers.</p>
+                                <h4 class="font-semibold text-gray-800">Global Reach</h4>
+                                <p class="text-gray-600">Secure maritime jobs with <strong>leading companies worldwide</strong>, spanning <strong>cruise lines, shipping firms, offshore energy providers, and more</strong>.</p>
                             </div>
                         </div>
                         
@@ -693,8 +741,8 @@
                                 <i class="fas fa-bell text-blue-600"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-800">Job Alerts</h4>
-                                <p class="text-gray-600">Get notified when new positions matching your skills and preferences become available.</p>
+                                <h4 class="font-semibold text-gray-800">Personalized Job Alerts</h4>
+                                <p class="text-gray-600">Receive <strong>instant notifications</strong> on positions that match your <strong>skills, certifications, and career goals</strong>.</p>
                             </div>
                         </div>
                         
@@ -703,8 +751,8 @@
                                 <i class="fas fa-file-alt text-blue-600"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-800">Career Resources</h4>
-                                <p class="text-gray-600">Access guides on certification requirements, interview tips, and career development in the maritime sector.</p>
+                                <h4 class="font-semibold text-gray-800">Exclusive Career Resources</h4>
+                                <p class="text-gray-600">Access expert <strong>guides on certification requirements, interview strategies, and industry trends</strong>, empowering you to excel in maritime careers.</p>
                             </div>
                         </div>
                     </div>
@@ -789,8 +837,15 @@
                 <div class="md:w-1/2">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">About Jikolat Global Investment Limited</h2>
                     <div class="w-20 h-1 bg-blue-600 mb-6"></div>
-                    <p class="text-gray-600 mb-6">Jikolat Global Investment Limited is a diversified investment company specializing in ship management and ownership, crew management, manpower resources, and hotel ownership and management. Our core services include ship brokerage, chartering, bunker supply, cargo freight and forwarding, as well as hotel management.</p>
-                    <p class="text-gray-600 mb-6">Our team combines recruitment expertise with first-hand maritime experience, ensuring we understand the unique requirements of both candidates and employers in this specialized field.</p>
+                    <p class="text-gray-600 mb-6">Jikolat Global Investment Limited is a <strong>diversified investment company</strong> with expertise spanning <strong>ship management and ownership, crew management, manpower resources, and hotel ownership and management</strong>.</p><br>
+                    <p class="text-gray-600 mb-6"><strong>Core Services:</strong></p>
+                        <ul style:"margin-left: 2%;" class="text-gray-600 mb-6">
+                            <li><strong>Ship Brokerage & Chartering </strong>– Facilitating vessel transactions and charter agreements tailored to industry needs.</li>
+                            <li><strong>Bunker Supply</strong> – Ensuring seamless fuel procurement for maritime operations.</li>
+                            <li><strong>Cargo Freight & Forwarding</strong> – Delivering efficient logistics and transportation solutions.</li>
+                            <li><strong>Hotel Management</strong> – Overseeing hospitality operations with a commitment to excellence.</li>
+                        </ul><br>
+                    <p class="text-gray-600 mb-6">Backed by a <strong>team of seasoned professionals</strong>, we blend <strong>recruitment expertise</strong> with <strong>first-hand maritime experience</strong>, ensuring <strong>a deep understanding</strong> of the unique demands of both <strong>candidates</strong> and <strong>employers</strong> in this specialized field.</p>
                     
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div>
@@ -938,5 +993,10 @@
         jobCards.forEach(card => {
             card.style.transition = 'all 0.3s ease';
         });
+            function toggleBox() {
+            const box = document.getElementById('infoBox');
+            box.classList.toggle('show');
+          }
+
     </script>
 </html>
