@@ -39,41 +39,140 @@
             background: #3490dc;
         }
         
-            .info-box {
-          display: none;
-          padding: 16px;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          background: #f9f9f9;
-          margin-top: 10px;
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        .info-box.show {
-          display: block;
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
         }
-        .close-btn {
-          background-color: #e74c3c;
-          color: white;
-          padding: 8px 12px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
-        img {
-          max-width: 100%;
-          height: auto;
+        
+        .wave-shape {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            opacity: 0.1;
         }
-        .container {
-          max-width: 1200px;
+        
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 200px;
+            transform: rotate(180deg);
         }
-        .job-card, .course-card, .testimonial-card {
-          transition: all 0.3s ease;
+        
+        .wave-shape .shape-fill {
+            fill: #57DDFF;
         }
-        @media (max-width: 768px) {
-          .testimonial-card {
-            padding: 1.5rem;
+        
+        /* Animation for hero text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        /* Custom checkbox for job filters */
+        .custom-checkbox input:checked + span {
+            background-color: #3490dc;
+            border-color: #3490dc;
+        }
+        
+        .custom-checkbox input:checked + span:after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.hidden {
+            transform: translateX(-100%);
+        }
+        
+        .mobile-menu.visible {
+            transform: translateX(0);
+        }
+        
+          .learn-more {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
           }
-        }
-        </style>
+        
+          .info-box {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 0 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 300px;
+            margin-top: 10px;
+            z-index: 10;
+          }
+        
+          .info-box.show {
+            max-height: 200px; /* enough to show content */
+            opacity: 1;
+            padding: 15px;
+          }
+        
+          .close-btn {
+            margin-top: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+        
+          @media (min-width: 768px) {
+            .info-box {
+              position: absolute;
+              top: 50px;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        
+          @media (max-width: 767px) {
+            .info-box {
+              position: static;
+              transform: none;
+            }
+          }
+
+    </style>
 </head>
 <body class="text-gray-800 bg-gray-50">
     <!-- Header/Navigation -->
@@ -251,7 +350,6 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Maritime Job Categories</h2>
-                <p class="text-gray-600 mb-4">Here are the major categories of Maritime jobs, covering diverse roles both at sea and ashore:</p>
                 <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
             </div>
             
@@ -262,10 +360,18 @@
                         </div>
                         <h3 class="text-xl font-semibold">Seafaring/Shipboard Jobs</h3>
                     </div>
-                    <p class="text-gray-600 mb-4">1.Includes deck officers, marine engineers, and ratings (e.g., Able Seamen, Oilers, Bosuns). These professionals operate and maintain ships.</p>
-                    <a href="#" class="text-blue-600 font-medium flex items-center">Explore Jobs <i class="fas fa-arrow-right ml-2"></i></a>
+                    <p class="text-gray-600 mb-4">Includes deck officers, marine engineers, and ratings (e.g., Able Seamen, Oilers, Bosuns). These professionals operate and maintain ships.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center">Learn More... <i class="fas fa-arrow-right ml-2"></i></a>
+                    <div id="infoBox" class="info-box">
+                      <p>Seafarer jobs are broadly categorized into three main areas: deck, engine, and catering/housekeeping departments. Each department has specific roles and responsibilities:</p>
+                      <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="close-btn" onclick="toggleBox()">Close</button>
+                        <a href="jobs.html">
+                          <button class="close-btn" style="background-color: #3498db;">Explore Jobs</button>
+                        </a>
+                      </div>
+                    </div>
                 </div>
-               
 
                 <div class="job-category-card p-6 border border-gray-200 rounded-lg hover:border-blue-400 transition">
                     <div class="flex items-center mb-4">
@@ -844,46 +950,53 @@
     </footer>
     
     <script>
-        function toggleBox() {
-          const box = document.getElementById('infoBox');
-          box.classList.toggle('show');
-        }
-    
+        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const closeMobileMenu = document.getElementById('close-mobile-menu');
-    
-        if (mobileMenuButton && mobileMenu && closeMobileMenu) {
-          mobileMenuButton.addEventListener('click', () => {
+        
+        mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.add('visible');
-          });
-    
-          closeMobileMenu.addEventListener('click', () => {
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
             mobileMenu.classList.remove('visible');
             mobileMenu.classList.add('hidden');
-          });
-        }
-    
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-    
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-    
-            if (targetElement) {
-              window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-              });
-    
-              if (mobileMenu && mobileMenu.classList.contains('visible')) {
-                mobileMenu.classList.remove('visible');
-                mobileMenu.classList.add('hidden');
-              }
-            }
-          });
         });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('visible')) {
+                        mobileMenu.classList.remove('visible');
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Job card hover effect
+        const jobCards = document.querySelectorAll('.job-card');
+        jobCards.forEach(card => {
+            card.style.transition = 'all 0.3s ease';
+        });
+            function toggleBox() {
+            const box = document.getElementById('infoBox');
+            box.classList.toggle('show');
+          }
+
     </script>
 </html>
