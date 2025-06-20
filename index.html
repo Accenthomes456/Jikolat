@@ -962,6 +962,10 @@
     </footer>
     
     <script>
+            function toggleBox() {
+            const box = document.getElementById('infoBox');
+            box.classList.toggle('show');
+          }
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -1005,10 +1009,6 @@
         jobCards.forEach(card => {
             card.style.transition = 'all 0.3s ease';
         });
-            function toggleBox() {
-            const box = document.getElementById('infoBox');
-            box.classList.toggle('show');
-          }
 
     </script>
 </html>
