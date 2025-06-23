@@ -51,7 +51,7 @@
     <!-- Filter Section -->
     <div class="bg-white p-4 rounded-md shadow mb-8">
       <div class="flex flex-wrap gap-4">
-        <input type="text" placeholder="Job title, keywords" class="flex-grow px-4 py-2 border rounded w-full md:w-1/4">
+        <input type="text" placeholder="Job title, keywords" class="flex-grow px-4 py-2 border rounded w-full md:w-1/4" onkeyup="filterJobsBySearch()">
         <select class="px-4 py-2 border rounded w-full md:w-1/4" id="location-filter" onchange="filterJobs()">
           <option value="all">All Locations</option>
           <option value="offshore">Offshore</option>
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Job Listing Card -->
-    <div class="job-card" data-category="engine" data-location="asia">
+    <div class="job-card" data-category="engine" data-location="asia" data-keywords="engine, maritime, human resources, asia">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="offshore">
+    <div class="job-card" data-category="engine" data-location="offshore" data-keywords="deck, maritime, human resources, offshore">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -139,7 +139,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="offshore">
+    <div class="job-card" data-category="engine" data-location="offshore" data-keywords="rig, maritime, human resources, offshore">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -168,7 +168,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="offshore">
+    <div class="job-card" data-category="engine" data-location="offshore" data-keywords="deck, maritime, human resources, offshore">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -197,7 +197,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="onshore">
+    <div class="job-card" data-category="engine" data-location="onshore" data-keywords="deck, maritime, human resources, onshore">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -226,7 +226,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="america">
+    <div class="job-card" data-category="engine" data-location="america" data-keywords="hr, maritime, human resources, america">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -255,7 +255,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="america">
+    <div class="job-card" data-category="engine" data-location="america" data-keywords="deck, maritime, human resources, america">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -284,7 +284,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="onshore">
+    <div class="job-card" data-category="engine" data-location="onshore" data-keywords="deck, maritime, human resources, onshore">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -313,7 +313,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="deck" data-location="africa">
+    <div class="job-card" data-category="deck" data-location="africa" data-keywords="hr, maritime, human resources, africa">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -342,7 +342,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="deck" data-location="africa">
+    <div class="job-card" data-category="deck" data-location="africa" data-keywords="deck, maritime, human resources, africa">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -371,7 +371,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="africa">
+    <div class="job-card" data-category="engine" data-location="africa" data-keywords="deck, maritime, human resources, africa">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -400,7 +400,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="africa">
+    <div class="job-card" data-category="engine" data-location="africa" data-keywords="deck, maritime, human resources, africa">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -429,7 +429,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="deck" data-location="asia">
+    <div class="job-card" data-category="deck" data-location="asia" data-keywords="deck, maritime, human resources, asia">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -458,7 +458,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="engine" data-location="europe">
+    <div class="job-card" data-category="engine" data-location="europe" data-keywords="engine, captain, human resources, europe">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -487,7 +487,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="deck" data-location="europe">  
+    <div class="job-card" data-category="deck" data-location="europe" data-keywords="hr, admin, human resources, europe">  
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -516,7 +516,7 @@
       </div>
     </div>
 
-    <div class="job-card" data-category="deck" data-location="asia">
+    <div class="job-card" data-category="deck" data-location="asia" data-keywords="hr, admin, human resources, asia">
       <div class="bg-white p-6 rounded-md shadow mb-6 flex gap-4">
         <img src="PG/MM.png" alt="Company Logo" class="h-16 w-16 object-contain" />
         <div class="flex-grow">
@@ -552,16 +552,19 @@
     function filterJobs() {
       const category = document.getElementById('category-filter').value;
       const location = document.getElementById('location-filter').value;
+      const search = document.getElementById('job-search').value.toLowerCase();
       const jobs = document.querySelectorAll('.job-card');
     
       jobs.forEach(job => {
         const jobCategory = job.getAttribute('data-category');
         const jobLocation = job.getAttribute('data-location');
+        const jobKeywords = job.getAttribute('data-keywords').toLowerCase();
     
         const matchCategory = category === 'all' || jobCategory === category;
         const matchLocation = location === 'all' || jobLocation === location;
+        const matchSearch = search === '' || jobKeywords.includes(search);
     
-        if (matchCategory && matchLocation) {
+        if (matchCategory && matchLocation && matchSearch) {
           job.style.display = 'block';
         } else {
           job.style.display = 'none';
