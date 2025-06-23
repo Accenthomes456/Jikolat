@@ -165,6 +165,7 @@
       <tr><td>Seaman's book / ID card *</td><td><input type="text" required></td><td><input type="date" required></td><td><input type="text" required></td><td><input type="date" required></td></tr>
       <tr><td>International Passport *</td><td><input type="text" required></td><td><input type="date" required></td><td><input type="text" required></td><td><input type="date" required></td></tr>
       <tr><td>National Passport</td><td><input type="text"></td><td><input type="date"></td><td><input type="text"></td><td><input type="date"></td></tr>
+      <tr><td>Yellow Card</td><td><input type="text"></td><td><input type="date"></td><td><input type="text"></td><td><input type="date"></td></tr>
     </table>
   </div>
 
@@ -221,6 +222,20 @@
       <tr><td>DP Advanced Course</td><td><input type="text"></td><td><input type="date"></td><td><input type="text"></td><td><input type="date"></td></tr>
       <tr><td>DP Full</td><td><input type="text"></td><td><input type="date"></td><td><input type="text"></td><td><input type="date"></td></tr>
     </table>
+
+    <!-- ✅ Place the following block ENTIRELY BELOW the existing table -->
+      <div class="mt-6">
+        <!-- Tabs Section (tab buttons go here) -->
+        <div id="tabs" class="flex flex-wrap gap-2 mb-4"></div>
+      
+        <!-- Add New Tab Button -->
+        <button onclick="addTab()" class="mb-6 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          + Add Tab
+        </button>
+      
+        <!-- Tab Content Section (each new tab's table shows here) -->
+        <div id="tabContents"></div>
+      </div>
   </div>
 
     <!-- Sea Services -->
@@ -238,5 +253,71 @@
       <tr><td><input type="text" placeholder="Position"></td><td><input type="text" placeholder="Vessel Name"><input type="text" placeholder="Flag"></td><td><input type="text" placeholder="Vessel Type"><input type="text" placeholder="DWT"></td><td><input type="text" placeholder="ME Type"><input type="text" placeholder="KW"></td><td><input type="date" placeholder="From"><input type="date" placeholder="Till"></td><td><input type="text" placeholder="Ship Owner"><input type="text" placeholder="Country"></td><td><input type="message" placeholder="Contract Notes"></td></tr>
     </table>
   </div>
+
+    <script>
+    let tabCount = 0;
+    let currentTabId = null;
+  
+    function addTab() {
+      tabCount++;
+      const tabId = `tab${tabCount}`;
+      currentTabId = tabId;
+  
+      // Create Tab Button
+      const tabBtn = document.createElement('button');
+      tabBtn.innerText = `Section ${tabCount}`;
+      tabBtn.className = "tab-btn bg-gray-200 px-4 py-2 rounded hover:bg-blue-400";
+      tabBtn.onclick = () => switchTab(tabId);
+      document.getElementById('tabs').appendChild(tabBtn);
+  
+      // Create Tab Content
+      const tabContent = document.createElement('div');
+      tabContent.id = tabId;
+      tabContent.className = "tab-content hidden mb-6";
+      tabContent.innerHTML = `
+        <div class="overflow-x-auto">
+          <table class="w-full border border-gray-300 text-sm">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="border px-2 py-1">Certificate</th>
+                <th class="border px-2 py-1">No.</th>
+                <th class="border px-2 py-1">Date of Issue</th>
+                <th class="border px-2 py-1">Country of Issue</th>
+                <th class="border px-2 py-1">Valid Up</th>
+                <th class="border px-2 py-1">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <button onclick="addRow('${tabId}')" class="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Add Row</button>
+      `;
+      document.getElementById('tabContents').appendChild(tabContent);
+  
+      switchTab(tabId);
+    }
+  
+    function switchTab(tabId) {
+      currentTabId = tabId;
+      document.querySelectorAll('.tab-content').forEach(div => div.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+    }
+  
+    function addRow(tabId) {
+      const tbody = document.querySelector(`#${tabId} tbody`);
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="border px-2 py-1"><input type="text" placeholder="Certificate" class="w-full px-2 py-1 border rounded"></td>
+        <td class="border px-2 py-1"><input type="text" placeholder="Number" class="w-full px-2 py-1 border rounded"></td>
+        <td class="border px-2 py-1"><input type="date" class="w-full px-2 py-1 border rounded"></td>
+        <td class="border px-2 py-1"><input type="text" placeholder="Country" class="w-full px-2 py-1 border rounded"></td>
+        <td class="border px-2 py-1"><input type="date" class="w-full px-2 py-1 border rounded"></td>
+        <td class="border px-2 py-1 text-center">
+          <button onclick="this.closest('tr').remove()" class="text-red-600 hover:underline">Delete</button>
+        </td>
+      `;
+      tbody.appendChild(row);
+    }
+  </script>
 </body>
 </html>
