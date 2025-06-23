@@ -51,7 +51,7 @@
     <!-- Filter Section -->
     <div class="bg-white p-4 rounded-md shadow mb-8">
       <div class="flex flex-wrap gap-4">
-        <input type="text" placeholder="Job title, keywords" class="flex-grow px-4 py-2 border rounded w-full md:w-1/4" onkeyup="filterJobsBySearch()">
+        <input type="text" id="job-search" placeholder="Job title, keywords" class="flex-grow px-4 py-2 border rounded w-full md:w-1/4" onkeyup="filterJobsBySearch()">
         <select class="px-4 py-2 border rounded w-full md:w-1/4" id="location-filter" onchange="filterJobs()">
           <option value="all">All Locations</option>
           <option value="offshore">Offshore</option>
