@@ -129,8 +129,34 @@
     <div class="form-group"><label>First Name</label><input type="text" required></div>
     <div class="form-group"><label>Last Name</label><input type="text" required></div>
     <div class="form-group"><label>Initial</label><input type="text"></div>
+    <label>Gender</label><br>
+    <input type="radio" name="gender" id="male" value="male" required>
+    <label for="male">Male</label>
+    <input type="radio" name="gender" id="female" value="female" required>
+    <label for="female">Female</label>
     <div class="form-group"><label>Position Applied For</label><input type="text" required></div>
-    <div class="form-group"><label>Vessel Type</label><input type="text"></div>
+    <label>Vessel Type</label>
+    <input type="radio" name="vessel" id="bulk" value="bulk" required>
+    <label for="bulk">Bulk Carriers</label>
+    <input type="radio" name="vessel" id="cargo" value="cargo" required>
+    <label for="cargo">Cargo Vessels</label>
+    <input type="radio" name="container" id="container" value="container" required>
+    <label for="container">Container Carriers</label>
+    <input type="radio" name="fishing" id="fishing" value="fishing" required>
+    <label for="fishing">Fishing Vessels</label>
+    <input type="radio" name="offshore" id="offshore" value="offshore" required>
+    <label for="offshore">Offshore Fleets</label>
+    <input type="radio" name="Onshore" id="onshore" value="onshore" required>
+    <label for="onshore">Onshore Jobs</label>
+    <input type="radio" name="passenger" id="passenger" value="passenger" required>
+    <label for="passenger">Passenger Ships</label>
+    <input type="radio" name="reefer" id="reefer" value="reefer" required>
+    <label for="reefer">Reefer Vessels</label>
+    <input type="radio" name="tankers" id="tankers" value="tankers" required>
+    <label for="tankers">Tankers</label>
+    <input type="radio" name="roro" id="roro" value="roro" required>
+    <label for="roro">Roro Vessels</label>
+    </div>
     <div class="form-group"><label>Minimum Salary (USD)</label><input type="number" placeholder="USD $" min="0"></div>
     <div class="form-group"><label>Date of Birth</label><input type="date" required></div>
     <div class="form-group"><label>Place of Birth</label><input type="text"></div>
@@ -146,13 +172,13 @@
       <label>English Level</label>
       <select>
         <option value="">-- Select --</option>
-        <option value="basic">Basic</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
+        <option value="poor">Poor</option>
+        <option value="satisfactory">Satisfactory </option>
+        <option value="fluent">Fluent</option>
         <option value="native">Native</option>
       </select>
     </div>
-    <div class="form-group"><label>Language Test (Optional)</label><input type="text" placeholder="IELTS, TOEFL..."></div>
+    <div class="form-group"><label>Language Test (Optional)</label><input type="text" placeholder="IELTS, TOEFL..."><input type="text" placeholder="Score"></div>
     <div class="form-group"><label>Test Year</label><input type="number" placeholder="e.g. 2024"></div>
     <div class="form-group"><label>Closest Airport</label><input type="text"></div>
   </div>
@@ -226,7 +252,7 @@
     <!-- ✅ Place the following block ENTIRELY BELOW the existing table -->
       <div class="mt-6">
         <!-- Tabs Section (tab buttons go here) -->
-        <div id="tabs" class="flex flex-wrap gap-2 mb-4"></div>
+        <!-- <div id="tabs" class="flex flex-wrap gap-2 mb-4"></div> --
       
         <!-- Add New Tab Button -->
         <button onclick="addTab()" class="mb-6 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
@@ -252,6 +278,15 @@
       <tr><th>Position</th><th>Vessel Name / Flag</th><th>Vessel Type / DWT</th><th>ME Type / KW</th><th>From - Till</th><th>Ship Owner / Country</th><th>Contract</th></tr>
       <tr><td><input type="text" placeholder="Position"></td><td><input type="text" placeholder="Vessel Name"><input type="text" placeholder="Flag"></td><td><input type="text" placeholder="Vessel Type"><input type="text" placeholder="DWT"></td><td><input type="text" placeholder="ME Type"><input type="text" placeholder="KW"></td><td><input type="date" placeholder="From"><input type="date" placeholder="Till"></td><td><input type="text" placeholder="Ship Owner"><input type="text" placeholder="Country"></td><td><input type="message" placeholder="Contract Notes"></td></tr>
     </table>
+    <div id="seaTabs" class="flex flex-wrap gap-2 mb-4"></div>
+    
+    <!-- Button to add new sea service tab -->
+    <button onclick="addSeaTab()" class="mb-6 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+      + Add Sea Service Tab
+    </button>
+    
+    <!-- Container for all tab content -->
+    <div id="seaTabContents"></div>
   </div>
 
     <script>
@@ -318,6 +353,75 @@
       `;
       tbody.appendChild(row);
     }
-  </script>
+      let seaTabCount = 0;
+    
+      function addSeaTab() {
+        seaTabCount++;
+        const tabId = `seaTab${seaTabCount}`;
+    
+        // Create Tab Button
+        const btn = document.createElement("button");
+        btn.textContent = `Sea Service ${seaTabCount}`;
+        btn.className = "px-3 py-1 bg-gray-200 rounded hover:bg-green-300";
+        btn.onclick = () => switchTab(tabId, 'seaTabContents');
+        document.getElementById("seaTabs").appendChild(btn);
+    
+        // Create Tab Content
+        const div = document.createElement("div");
+        div.id = tabId;
+        div.className = "tab-content hidden mb-6";
+        div.innerHTML = `
+          <div class="overflow-x-auto">
+            <table class="w-full border border-gray-300 text-sm mb-2">
+              <thead>
+                <tr>
+                  <th class="border px-2 py-1">Position</th>
+                  <th class="border px-2 py-1">Vessel Name / Flag</th>
+                  <th class="border px-2 py-1">Vessel Type / DWT</th>
+                  <th class="border px-2 py-1">ME Type / KW</th>
+                  <th class="border px-2 py-1">From - Till</th>
+                  <th class="border px-2 py-1">Ship Owner / Country</th>
+                  <th class="border px-2 py-1">Contract</th>
+                  <th class="border px-2 py-1">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${createSeaRow()}
+              </tbody>
+            </table>
+          </div>
+          <button onclick="addSeaRow('${tabId}')" class="mt-2 bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Add Row</button>
+        `;
+        document.getElementById("seaTabContents").appendChild(div);
+        switchTab(tabId, 'seaTabContents');
+      }
+    
+      function addSeaRow(tabId) {
+        const tbody = document.querySelector(`#${tabId} tbody`);
+        tbody.insertAdjacentHTML("beforeend", createSeaRow());
+      }
+    
+      function createSeaRow() {
+        return `
+          <tr>
+            <td class="border px-2 py-1"><input type="text" placeholder="Position" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1"><input type="text" placeholder="Vessel / Flag" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1"><input type="text" placeholder="Type / DWT" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1"><input type="text" placeholder="ME Type / KW" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1"><input type="text" placeholder="From - Till" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1"><input type="text" placeholder="Owner / Country" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1"><input type="text" placeholder="Contract" class="w-full border px-2 py-1 rounded" /></td>
+            <td class="border px-2 py-1 text-center">
+              <button onclick="this.closest('tr').remove()" class="text-red-600 hover:underline">Delete</button>
+            </td>
+          </tr>
+        `;
+      }
+    
+      function switchTab(id, containerId) {
+        document.querySelectorAll(`#${containerId} .tab-content`).forEach(div => div.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+      }
+      </script>
 </body>
 </html>
