@@ -224,12 +224,23 @@
   </div>
 
     <!-- Sea Services -->
-  <h2>Sea Service (Last 5 Years)</h2>
+   <h2 class="text-xl font-semibold mb-2">Sea Service:</h2>
+  
+  <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+    <!-- Input Field -->
+    <input type="text" name="seaService" placeholder="Enter details"
+           class="border border-gray-300 rounded px-3 py-2 w-full md:w-1/2">
+  
+  
+    <label class="inline-flex items-center">
+      <input type="checkbox" name="noSeaService" class="form-checkbox text-blue-600">
+      <span class="ml-2">I Have No Sea Service</span>
+    </label>
+  </div>
   <div class="table-container">
     <table>
-      <tr><th>Position</th><th>Vessel Name / Flag</th><th>Vessel Type / DWT</th><th>ME Type / KW</th><th>From - Till</th><th>Ship Owner / Country</th></tr>
-      <tr><td><input type="text" placeholder="Position"></td><td><input type="text" placeholder="Vessel Name"><input type="text" placeholder="Flag"></td><td><input type="text" placeholder="Vessel Type"><input type="text" placeholder="DWT"></td><input type="text" placeholder="ME Type"><input type="text" placeholder="KW"></td><td><input type="date" placeholder="From"><input type="date" placeholder="Till"></td><td><input type="text" placeholder="Ship Owner"><input type="text" placeholder="Country"></td><br>
-        <input type="message" placeholder="Contract Notes"></tr>
+      <tr><th>Position</th><th>Vessel Name / Flag</th><th>Vessel Type / DWT</th><th>ME Type / KW</th><th>From - Till</th><th>Ship Owner / Country</th><th>Contract</th></tr>
+      <tr><td><input type="text" placeholder="Position"></td><td><input type="text" placeholder="Vessel Name"><input type="text" placeholder="Flag"></td><td><input type="text" placeholder="Vessel Type"><input type="text" placeholder="DWT"></td><input type="text" placeholder="ME Type"><input type="text" placeholder="KW"></td><td><input type="date" placeholder="From"><input type="date" placeholder="Till"></td><td><input type="text" placeholder="Ship Owner"><input type="text" placeholder="Country"></td><td><input type="message" placeholder="Contract Notes"></td></tr>
     </table>
   </div>
 </body>
