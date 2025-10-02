@@ -155,7 +155,6 @@
     </div>
     <div class="form-group"><label>Minimum Salary (USD)</label><input type="number" placeholder="USD $" min="0"></div>
     <div class="form-group"><label>Date of Birth</label><input type="date" required></div>
-    <div class="form-group"><label>Place of Birth</label><input type="text"></div>
     <div class="form-group"><label>Phone Number 1</label><input type="tel" required></div>
     <div class="form-group"><label>Phone Number 2</label><input type="tel"></div>
     <div class="form-group"><label>Email Address</label><input type="email" required></div>
@@ -194,28 +193,15 @@
     </table>
   </div>
 
-  <!-- Diplomas -->
+  <!-- Educational Degrees -->
   <h2>Diplomas</h2>
   <div class="table-container">
     <table>
-      <tr><th>Title of Document</th><th>No.</th><th>Date of Issue</th><th>Country of Issue</th><th>Valid Up</th></tr>
-      <tr><td>Rank *</td><td colspan="4">
-        <select required>
-          <option value="">-- Select Rank --</option>
-          <option value="cadet">Cadet</option>
-        </select>
-      </td></tr>
-      <tr><td>Professional License *</td><td><input type="text" required></td><td><input type="date" required></td>
-        <td>
-          <select required>
-            <option value="">Choose Country</option>
-            <option value="NG">Nigeria</option>
-            <option value="US">United States</option>
-          </select>
-        </td>
-        <td><input type="date" required></td>
+      <tr><th>Title of Document</th><th>No.</th><th>Date of Issue</th><th>Country of Issue</th></tr>
+      <tr><td><input type="text" placeholder="Name Of Institution"></td></tr>
+      <tr><td>Course Studied *</td><td><input type="text" required></td><td><input type="date" required></td>
+        <td><input type="text" required></td>
       </tr>
-      <tr><td>Endorsement</td><td colspan="4"><input type="date"></td></tr>
     </table>
   </div>
 
